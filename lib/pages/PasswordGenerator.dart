@@ -119,7 +119,7 @@ class _MyHomePageState extends State<PasswordGenerator> {
             ),
             //añadimos un checkbox de numeros
             CheckboxListTile(
-              title: const Text("Numeros"),
+              title: const Text("Números"),
               value: number,
               onChanged: (bool? value) {
                 setState(() {
