@@ -36,6 +36,9 @@ class _MyHomePageState extends State<PasswordGenerator> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Text(
+              'Longitud de la contraseña:',
+            ),
             //creamos un select del 1 al 32 para el numero de caracteres
             DropdownButton<int>(
               value: passwordLength,
