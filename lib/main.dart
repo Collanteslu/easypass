@@ -14,8 +14,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Easypassword',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        brightness: Brightness.light,
+        /* light theme settings */
       ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        /* dark theme settings */
+      ),
+      themeMode: ThemeMode.dark,
       home: const PasswordGenerator(title: 'Easypassword'),
     );
   }

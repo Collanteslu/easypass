@@ -32,113 +32,128 @@ class _MyHomePageState extends State<PasswordGenerator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            //creamos un select del 1 al 32 para el numero de caracteres
-            DropdownButton<int>(
-              value: passwordLength,
-              onChanged: (int? value) {
-                setState(() {
-                  passwordLength = value!;
-                  _getPassword();
-                });
-              },
-              items: <int>[
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15,
-                16,
-                17,
-                18,
-                19,
-                20,
-                21,
-                22,
-                23,
-                24,
-                25,
-                26,
-                27,
-                28,
-                29,
-                30,
-                31,
-                32
-              ].map((int value) {
-                return DropdownMenuItem<int>(
-                  value: value,
-                  child: Text('$value'),
-                );
-              }).toList(),
-            ),
-            //añadimos un checkbox de letras mayusculas
-            CheckboxListTile(
-              title: const Text("Mayusculas"),
-              value: uppercase,
-              onChanged: (bool? value) {
-                setState(() {
-                  uppercase = value!;
-                  _getPassword();
-                });
-              },
-            ),
-            //añadimos un checkbox de letras minusculas
-            CheckboxListTile(
-              title: const Text("Minusculas"),
-              value: lowercase,
-              onChanged: (bool? value) {
-                setState(() {
-                  lowercase = value!;
-                });
-              },
-            ),
-            //añadimos un checkbox de simbolos
-            CheckboxListTile(
-              title: const Text("Simbolos"),
-              value: simbol,
-              onChanged: (bool? value) {
-                setState(() {
-                  simbol = value!;
-                  _getPassword();
-                });
-              },
-            ),
-            //añadimos un checkbox de numeros
-            CheckboxListTile(
-              title: const Text("Numeros"),
-              value: number,
-              onChanged: (bool? value) {
-                setState(() {
-                  number = value!;
-                  _getPassword();
-                });
-              },
-            ),
-            const Text(
-              'Su nueva contraseña:',
-            ),
-            Text(
-              _password,
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            ElevatedButton(
-                onPressed: _getPassword,
-                child: const Text('Generar contraseña'))
-          ],
+      body: Container(
+        margin: const EdgeInsets.all(100.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              //creamos un select del 1 al 32 para el numero de caracteres
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Número de caracteres:   "),
+                  DropdownButton<int>(
+                    value: passwordLength,
+                    onChanged: (int? value) {
+                      setState(() {
+                        passwordLength = value!;
+                        _getPassword();
+                      });
+                    },
+                    items: <int>[
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      6,
+                      7,
+                      8,
+                      9,
+                      10,
+                      11,
+                      12,
+                      13,
+                      14,
+                      15,
+                      16,
+                      17,
+                      18,
+                      19,
+                      20,
+                      21,
+                      22,
+                      23,
+                      24,
+                      25,
+                      26,
+                      27,
+                      28,
+                      29,
+                      30,
+                      31,
+                      32
+                    ].map((int value) {
+                      return DropdownMenuItem<int>(
+                        value: value,
+                        child: Text('$value'),
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+              //añadimos un checkbox de letras mayusculas
+              CheckboxListTile(
+                title: const Text("Mayusculas"),
+                value: uppercase,
+                onChanged: (bool? value) {
+                  setState(() {
+                    uppercase = value!;
+                    _getPassword();
+                  });
+                },
+              ),
+              //añadimos un checkbox de letras minusculas
+              CheckboxListTile(
+                title: const Text("Minusculas"),
+                value: lowercase,
+                onChanged: (bool? value) {
+                  setState(() {
+                    lowercase = value!;
+                  });
+                },
+              ),
+              //añadimos un checkbox de simbolos
+              CheckboxListTile(
+                title: const Text("Simbolos"),
+                value: simbol,
+                onChanged: (bool? value) {
+                  setState(() {
+                    simbol = value!;
+                    _getPassword();
+                  });
+                },
+              ),
+              //añadimos un checkbox de numeros
+              CheckboxListTile(
+                title: const Text("Numeros"),
+                value: number,
+                onChanged: (bool? value) {
+                  setState(() {
+                    number = value!;
+                    _getPassword();
+                  });
+                },
+              ),
+              const Text(
+                'Su nueva contraseña:',
+              ),
+              const SizedBox(
+                height: 30.0,
+              ),
+              SelectableText(
+                _password,
+                style: Theme.of(context).textTheme.headline4,
+              ),
+              const SizedBox(
+                height: 30.0,
+              ),
+              ElevatedButton(
+                  onPressed: _getPassword,
+                  child: const Text('Generar contraseña'))
+            ],
+          ),
         ),
       ),
     );
